@@ -1,6 +1,10 @@
 # AnswerSheetGenerator
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.4.
+## Production Server
+http://answersheetgenerator.infinityfreeapp.com/ 
+
+Host: https://infinityfree.net/
+
 
 ## Development server
 
