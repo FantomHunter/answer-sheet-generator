@@ -1,0 +1,59 @@
+<div fxLayout="row" fxLayoutAlign="center">
+  <mat-card class="example-card" fxFlex.gt-md=30 fxFlex.md=50 fxFlex.sm=50 fxFlex.lt-sm=100>
+    <mat-card-header>
+      <mat-card-title>Multiple Choice Answer Sheet Generator</mat-card-title>
+      <mat-card-subtitle>Generation Form</mat-card-subtitle>
+    </mat-card-header>
+    <form [formGroup]="generateForm" (ngSubmit)="onGenrateSheet()">
+      <mat-card-content fxLayoutAlign="center">
+        <div fxLayout="column" fxLayoutAlign="center" fxFlex=80>
+          <mat-form-field appearance="fill">
+            <mat-label>Title</mat-label>
+            <input matInput formControlName="title">
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Number of questions</mat-label>
+            <input matInput formControlName="numberOfQuestion">
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-card-actions fxLayoutAlign="center">
+        <button mat-raised-button color="primary" type="submit">GENERATE</button>
+        <button mat-raised-button color="accent" type="button" (click)="onReset()">RESET</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>
+<div>
+  <mat-card class="answer-sheet">
+    <form>
+      <mat-card-header>
+        <mat-card-title>{{ answerSheet.title}}</mat-card-title>
+        <mat-card-subtitle>Correct answer: {{answerSheet.result}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+
+        <mat-card class="answer-block" *ngFor="let answerBlock of answerSheet.answerList">
+          <section class="example-section" *ngFor="let answer of answerBlock.answerBlock">
+            <!-- <span class="example-label"> {{answer.id}}</span> -->
+            <mat-checkbox class="example-label" [labelPosition]="'before'" (change)="onCorrectCheck($event, answerBlock.id, answer.id)">{{answer.id}}</mat-checkbox>
+            <mat-checkbox class="example-margin">a</mat-checkbox>
+            <mat-checkbox class="example-margin">b</mat-checkbox>
+            <mat-checkbox class="example-margin">c</mat-checkbox>
+            <mat-checkbox class="example-margin">d</mat-checkbox>
+            <mat-checkbox class="example-margin">e</mat-checkbox>
+            <mat-checkbox class="example-margin">f</mat-checkbox>
+            <mat-checkbox class="example-margin">g</mat-checkbox>
+            <mat-checkbox class="example-margin">h</mat-checkbox>
+          </section>
+        </mat-card>
+      </mat-card-content>
+    </form>
+  </mat-card>
+</div>
