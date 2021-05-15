@@ -40,6 +40,7 @@ export class HomeComponent implements OnInit {
         isCorrect: false,
       };
 
+      answerBlock.answerBlock = answerBlock.answerBlock.concat(answer);
       if (
         answerBlock.answerBlock.length >= this.blockSize ||
         index == numberOfQuestion - 1
@@ -50,7 +51,6 @@ export class HomeComponent implements OnInit {
         answerBlockIndex = answerBlockIndex + 1;
         answerBlock = { answerBlock: [], id: answerBlockIndex };
       }
-      answerBlock.answerBlock = answerBlock.answerBlock.concat(answer);
     }
 
     console.log('answer sheet', this.answerSheet);
